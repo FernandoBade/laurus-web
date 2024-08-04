@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Zain:wght@200;300;400;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Zain:wght@200;300;400;700;800&display=swap');
 
 body {
 	@apply bg-fundo font-principal;
@@ -20,4 +20,43 @@ h6 {
 
 code {
 	@apply font-principal;
+}
+
+input[type="password"]::-webkit-textfield-decoration-container {
+    display: none;
+}
+
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+
+input[type="password"] {
+    padding-right: 20px; /* Ajuste conforme necessário */
+}
+
+input[type="password"]::-webkit-clear-button,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+    display: none;
+}
+
+/* Forçar a cor e a opacidade dos erros em WebKit */
+.erro {
+    -webkit-font-smoothing: antialiased;
+    -webkit-transition: none;
+    color: #ff5555;
+    opacity: 1;
+    font-weight: 400; /* Definir peso da fonte fixo */
+    transition: none; /* Desativar transições que podem afetar a renderização */
+}
+
+/* Ajustes no input para garantir a consistência */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-font-smoothing: antialiased;
+    outline: none;
+    box-shadow: none;
 }

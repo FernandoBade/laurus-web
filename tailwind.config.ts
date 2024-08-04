@@ -6,7 +6,7 @@ module.exports = {
             colors: {
                 fundo: '#282a36',
                 offwhite: '#f8f8f2',
-                cinzaAuzulado: '#6272a4',
+                cinzaAzulado: '#6272a4',
                 cinza: '#44475a',
                 ciano: '#8be9fd',
                 verde: '#50fa7b',
