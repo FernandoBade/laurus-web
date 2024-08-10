@@ -1,70 +1,60 @@
 // src/components/Botao.ts
 
 import { PropriedadesBotao } from "@utils/interfaces";
-import { CorBotao, TipoBotao } from "@utils/enums";
+import { TipoBotao, Tamanho, Cor } from "@utils/enums";
 
 export function criarBotao({
-    texto,
-    icone,
-    cor,
     tipo,
+    cor,
+    icone,
+    texto,
+    tamanho = Tamanho.Medio,
 }: PropriedadesBotao): string {
 
     const baseClasses = `
-    flex justify-center items-center
-    py-2 px-4 border border-transparent
-    rounded-md shadow-sm text-sm font-medium
-    transition duration-200 ease-in-out
-  `;
+    inline-flex items-center justify-center
+    border border-transparent rounded-md shadow-sm
+    font-medium transition duration-200 ease-in-out
+    focus:outline-none focus:ring-2 focus:ring-offset-2
+    `;
+
+    const tamanhoClasses = {
+        [Tamanho.Pequeno]: 'py-1 px-2 text-sm',
+        [Tamanho.Medio]: 'py-2 px-4 text-sm',
+        [Tamanho.Grande]: 'py-3 px-6 text-base',
+        [Tamanho.ExtraGrande]: 'py-3 px-6 text-base',
+    }[tamanho];
 
     const tipoClasses = {
         [TipoBotao.Primario]: `
-        bg-${cor}
-        text-offwhite
-        text-lg
-        m-2
-        rounded-md
-        transition-all
-        ease-in-out
-        duration-500
-
-        hover:shadow-md
-        hover:bg-${cor}-light
-
-        focus:shadow-lg
-
-        active:bg-${cor}-dark
-        active:shadow-sm`,
-
+        bg-${cor} text-offwhite hover:bg-${cor}-light focus:bg-${cor}-dark`,
         [TipoBotao.Secundario]: `
-        bg-${cor}-light
-        hover:bg-${cor}
-        text-${cor}-dark
-        hover:shadow-md
-        focus:shadow-lg
-        active:bg-${cor}-dark
-        active:shadow-sm`,
-
-        [TipoBotao.Icone]: `
-        bg-transparent
-        text-${cor}
-        hover:bg-${cor}-light
-        hover:shadow-md
-        focus:shadow-lg
-        active:bg-${cor}-light
-        active:shadow-sm`,
+        bg-${cor}-light text-${cor}-dark hover:bg-${cor} focus:bg-${cor}-dark`,
     }[tipo];
 
+    const corClasses = {
+        [Cor.Fundo]: 'fundo',
+        [Cor.Offwhite]: 'offwhite',
+        [Cor.CinzaAzulado]: 'cinzaAzulado',
+        [Cor.Cinza]: 'cinza',
+        [Cor.Ciano]: 'ciano',
+        [Cor.Verde]: 'verde',
+        [Cor.Laranja]: 'laranja',
+        [Cor.Rosa]: 'rosa',
+        [Cor.Roxo]: 'roxo',
+        [Cor.Vermelho]: 'vermelho',
+        [Cor.Amarelo]: 'amarelo',
+    }[cor];
+
     return `
-        <button class="
-            ${baseClasses}
-            ${tipoClasses}
-            focus:outline-none
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-${cor}-500
-        ">
-      ${icone ? `<img src="${icone}" alt="${texto || ''}" class="h-5 w-5" />` : texto}
+    <button class="
+        ${baseClasses}
+        ${tamanhoClasses}
+        ${tipoClasses}
+        focus:ring-${corClasses}-500
+    ">
+        ${icone ? `<i class="ri-${icone} mr-2"></i>` : ''}
+        ${texto ? `<span>${texto}</span>` : ''}
     </button>
   `;
 }

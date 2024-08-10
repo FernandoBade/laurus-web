@@ -1,5 +1,7 @@
-import { renderizarPaginaDeLogin } from './pages/login';
+import { renderizarBotoesDesignSystem } from './pages/dashboard';
+import { renderizarLogin } from './pages/login';
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderizarPaginaDeLogin();
+    renderizarBotoesDesignSystem();
+    renderizarLogin();
 });
